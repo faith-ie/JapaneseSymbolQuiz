@@ -1,5 +1,7 @@
 ﻿internal class Program
 {
+    private static int cAns = 0, wAns = 0;
+
     private static void Main()
     {
         Console.WriteLine("Welcome to the Japanese Symbol Quiz!");
@@ -293,7 +295,6 @@
 
         Console.WriteLine($"You have chosen {modeName} mode.");
         Console.WriteLine("Enter 'quit' to exit the quiz.");
-
         Random random = new();
         while (true)
         {
@@ -307,20 +308,33 @@
             if (userAnswer?.ToLower() == "quit")
             {
                 Console.WriteLine("Quiz ended. Goodbye!");
+                ShowScore();
                 break;
             }
 
             if (userAnswer?.ToLower() == expectedAnswer)
             {
                 Console.WriteLine("Correct!");
+                cAns++;
             }
             else
             {
                 Console.WriteLine($"Incorrect. The correct answer is {expectedAnswer}.");
+                wAns++;
             }
 
             Console.WriteLine();
         }
+    }
+
+    private static void ShowScore()
+    {
+        int totalQuestions = cAns + wAns;
+        float totalScore = cAns / (float)totalQuestions;
+        Console.WriteLine($"Correct Answers: {cAns}");
+        Console.WriteLine($"Wrong Answers: {wAns}");
+        Console.WriteLine($"Total Questions: {totalQuestions}");
+        Console.WriteLine($"Percent Correct: {totalScore * 100}%");
     }
 }
 

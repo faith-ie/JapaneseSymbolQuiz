@@ -334,7 +334,7 @@
         Console.WriteLine($"Correct Answers: {cAns}");
         Console.WriteLine($"Wrong Answers: {wAns}");
         Console.WriteLine($"Total Questions: {totalQuestions}");
-        Console.WriteLine($"Percent Correct: {totalScore * 100}%");
+        Console.WriteLine($"Percent Correct: {Math.Truncate(totalScore * 100)}%");
     }
 }
 
